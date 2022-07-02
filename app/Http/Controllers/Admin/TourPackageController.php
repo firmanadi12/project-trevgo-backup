@@ -16,8 +16,10 @@ class TourPackageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        // to get all the tour packages
         $items = TourPackage::all();
+
         return view('pages.admin.tour-package.index',[
             'items' => $items
         
@@ -31,6 +33,7 @@ class TourPackageController extends Controller
      */
     public function create()
     {
+        // return view to create a new tour package
         return view('pages.admin.tour-package.create');
     }
 
@@ -42,6 +45,7 @@ class TourPackageController extends Controller
      */
     public function store(TourPackageRequest $request)
     {
+        // to store the tour package
         $data = $request->all();
         $data['slug'] = Str::slug($request->title);
         

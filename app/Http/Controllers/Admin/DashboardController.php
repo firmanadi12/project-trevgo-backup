@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index(Request $request)
-    {
+    {   
+        // show the admin dashboard
         return view('pages.admin.dashboard');
     }
 

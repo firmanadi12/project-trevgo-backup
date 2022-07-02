@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    
+
     <!--style css-->
     @include('includes.admin.style')
     <!--/style css-->
@@ -67,7 +67,6 @@
 
             @yield('content')
 
-       
 
             <!--footer-->
             @include('includes.admin.footer')
@@ -76,9 +75,29 @@
         </div>
     </div>
 
-            <!--script-->
-            @include('includes.admin.script')
-          <!--/script-->
+    <div id="logoutModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-top">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="topModalLabel">Ready to Leave?</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                   <p> Select "Logout" below if you are ready to end your current session.</p>
+                </div>
+                <div class="modal-footer">
+                    <form action="{{route('logout')}}" method="POST">
+                    @csrf
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary"  type="submit">Logout</button>
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!--script-->
+    @include('includes.admin.script')
+    <!--/script-->
 </body>
-      
+
 </html>
