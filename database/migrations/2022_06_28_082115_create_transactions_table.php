@@ -17,7 +17,7 @@ class CreateTransactionsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('tour_packages_id');
             $table->integer('users_id');
-            $table->integer('addional_visa');
+            $table->integer('additional_visa');
             $table->integer('transaction_total');
             $table->string('transaction_status'); //In_cart, Pending , Success, Failed, Failed 
             $table->softDeletes();

@@ -37,7 +37,7 @@
         @auth
 
         <li class="nav-item mx-md-2">
-          <img src="{{asset('backend/assets/images/users/profile-pic.jpg')}}" alt="user" class="rounded-circle"
+          <img src="https://ui-avatars.com/api/?name={{auth::user()->name}}" alt="user" class="rounded-circle"
             width="40">
           <span class="ml-2 d-none d-lg-inline-block"><span>Hello, </span> <span
               class="text-dark">{{auth::user()->name}}</span>
