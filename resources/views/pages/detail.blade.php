@@ -72,6 +72,7 @@ Detail Wisata
                 </div>
               </div>
             </div>
+
             <p>
               {!! $item->about !!}
             </p>

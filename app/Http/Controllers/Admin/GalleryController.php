@@ -43,7 +43,7 @@ class GalleryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GalleryRequest $request)
     {
         $data = $request->all();
         $data['image'] = $request->file('image')->store(
@@ -98,7 +98,7 @@ class GalleryController extends Controller
      */
 
      // Update the gallery image
-    public function update(Request $request, $id)
+    public function update(GalleryRequest $request, $id)
     {   
         $data = $request->all();
         $data['image'] = $request->file('image')->store(
