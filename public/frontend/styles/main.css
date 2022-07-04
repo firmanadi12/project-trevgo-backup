@@ -71,12 +71,11 @@ header .btn-get-started:hover {
 
 .section-stats .stats-detail {
   padding-top: 15px;
-  background-color: #f7f9ff;
+  background-color: #fff;
   padding-left: 40px;
 }
 
 .section-stats h2 {
-  font-weight: bold;
   font-size: 30px;
   margin-bottom: 0;
 }
@@ -88,7 +87,7 @@ header .btn-get-started:hover {
 
 .section-popular {
   min-height: 1200px;
-  background: #fff;
+  background-color: #51ade5;
   margin-top: -50px;
   margin-bottom: -900px;
 }
@@ -98,7 +97,7 @@ header .btn-get-started:hover {
 }
 
 .section-popular .section-popular-heading h2, .section-popular .section-popular-heading p {
-  color: #071c4d;
+  color: #fff;
 }
 
 .section-popular .section-popular-heading h2 {
@@ -323,6 +322,7 @@ header .btn-get-started:hover {
 
 .section-details-content .features {
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .section-details-content .features h3 {

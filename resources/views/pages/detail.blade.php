@@ -49,9 +49,6 @@ Detail Wisata
             </div>
             @endif
 
-            <p>
-              {!! $item->about !!}
-            </p>
             <div class="features row pt-3">
               <div class="col-md-4">
                 <img src="{{url('frontend/images/ic_event.png')}}" alt="" class="features-image" />
@@ -75,6 +72,10 @@ Detail Wisata
                 </div>
               </div>
             </div>
+            <p>
+              {!! $item->about !!}
+            </p>
+
           </div>
         </div>
         <div class="col-lg-4" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine">
