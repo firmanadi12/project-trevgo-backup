@@ -8,7 +8,7 @@
     <main>
         <div class="section-success d-flex align-items-center">
           <div class="col text-center">
-            <img src="{{asset('frontend/images/ic_mail.png')}}" alt="">
+            <img src="{{asset('frontend/images/ic_mail.gif')}}" alt="" style="width : 400px;">
             <h1>Yey! Success</h1>
             <p>
               Your payment has been successfuly processed.
