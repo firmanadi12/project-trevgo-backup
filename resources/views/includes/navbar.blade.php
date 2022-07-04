@@ -23,7 +23,6 @@
           <a class="nav-link" href="{{route('home')}}/#testimonialsHeading">Testimonial</a>
         </li>
         
-
         @guest
 
         <li class="nav-item mx-md-2">

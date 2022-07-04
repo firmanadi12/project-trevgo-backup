@@ -115,60 +115,27 @@
           <div
             class="section-popular-travel row justify-content-center match-height"
           >
-            <div class="col-sm-6 col-md-6 col-lg-4">
-              <div class="card card-testimonial text-center">
-                <div class="testimonial-content">
-                  <img
-                    src="frontend/images/avatar-1.png"
-                    alt=""
-                    class="mb-4 rounded-circle"
-                  />
-                  <h3 class="mb-4">Angga Risky</h3>
-                  <p class="testimonials">
-                    “ It was glorious and I could not stop to say wohooo for
-                    every single moment Dankeeeeee “
-                  </p>
-                </div>
-                <hr />
-                <p class="trip-to mt-2">Trip to Ubud</p>
+          @forelse ($testimonies as $testimony )
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="card card-testimonial text-center">
+              <div class="testimonial-content">
+                <img
+                  {{-- src="frontend/images/avatar-1.png" --}}
+                  alt=""
+                  class="mb-4 rounded-circle"
+                />
+                <h3 class="mb-4">{{ $testimony->name }}</h3>
+                <p class="testimonials">
+                  “ {{ $testimony->comment }} “
+                </p>
               </div>
+              <hr />
+              <p class="trip-to mt-2">Trip to {{ $testimony->trip }}</p>
             </div>
-            <div class="col-sm-6 col-md-6 col-lg-4">
-              <div class="card card-testimonial text-center">
-                <div class="testimonial-content">
-                  <img
-                    src="frontend/images/avatar-2.png"
-                    alt=""
-                    class="mb-4 rounded-circle"
-                  />
-                  <h3 class="mb-4">Shayna</h3>
-                  <p class="testimonials">
-                    “ The trip was amazing and I saw something beautiful in that
-                    Island that makes me want to learn more “
-                  </p>
-                </div>
-                <hr />
-                <p class="trip-to mt-2">Trip to Nusa Penida</p>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-6 col-lg-4">
-              <div class="card card-testimonial text-center">
-                <div class="testimonial-content mb-auto">
-                  <img
-                    src="frontend/images/avatar-3.png"
-                    alt=""
-                    class="mb-4 rounded-circle"
-                  />
-                  <h3 class="mb-4">Shabrina</h3>
-                  <p class="testimonials">
-                    “ I loved it when the waves was shaking harder — I was
-                    scared too “
-                  </p>
-                </div>
-                <hr />
-                <p class="trip-to mt-2">Trip to Karimun Jawa</p>
-              </div>
-            </div>
+          </div>
+        @empty
+          <h1> Not Yet Implemented </h1>
+        @endforelse
           </div>
           <div class="row">
             <div class="col-12 text-center">

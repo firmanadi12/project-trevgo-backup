@@ -15,7 +15,8 @@ class HomeController extends Controller
         
         //return view with items
         return view('pages.home',[
-            'items' => $items
+            'items' => $items,
+            'testimonies' => []
         ]);
         
     }
