@@ -1,6 +1,6 @@
 <div class="container">
   <nav class="row navbar navbar-expand-lg navbar-light bg-white">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="{{route('home')}}">
       <img src="{{asset('frontend/images/logo.png')}}" alt="" />
     </a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
@@ -35,12 +35,19 @@
 
         @auth
 
+        @if (auth::user()->roles == "ADMIN")
+          <li class="nav-item mx-md-2">
+            <a class="nav-link" href="{{route('admin.dashboard')}}">Admin</a>
+          </li>
+        @endif
+
         <li class="nav-item mx-md-2">
           <img src="https://ui-avatars.com/api/?name={{auth::user()->name}}" alt="user" class="rounded-circle"
             width="40">
           <span class="ml-2 d-none d-lg-inline-block"><span>Hello, </span> <span
               class="text-dark">{{auth::user()->name}}</span>
         </li>
+
         @endauth
 
       </ul>

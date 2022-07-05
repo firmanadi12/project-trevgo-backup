@@ -8,7 +8,7 @@
                     <!-- ============================================================== -->
                     <div class="navbar-brand">
                         <!-- Logo icon -->
-                        <a href="index.html">
+                        <a href="{{route('home')}}">
                             <span class="logo-text">
                                 <!-- dark Logo text -->
                                 <img src="{{asset('backend/assets/images/logo.png')}}" alt="homepage" style="max-width:90%" />
