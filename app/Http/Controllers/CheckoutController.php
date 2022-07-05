@@ -15,7 +15,7 @@ class CheckoutController extends Controller
 {
     //  show the checkout page transaction with tour package, transaction detail , and user 
     //  return to view with items 
-    public function index(Request $request, $id)
+    public function index($id)
     {
         $item = Transaction::with(['details', 'tour_package', 'user'])->findOrFail($id);
 
@@ -25,10 +25,12 @@ class CheckoutController extends Controller
     }
 
     // 
-    public function process(Request $request, $id)
+    public function process($id)
     {
         $transaction = Transaction::where('users_id', Auth::user()->id)
-            ->where('tour_packages_id', $id)->first();
+            ->where('tour_packages_id', $id)
+            ->whereIn('transaction_status', ['IN_CART', 'PENDING'])
+            ->first();
 
 
         if (!$transaction) {
@@ -54,7 +56,7 @@ class CheckoutController extends Controller
     }
 
     //
-    public function remove(Request $request, $detail_id)
+    public function remove($detail_id)
     {
         $item = TransactionDetail::findorFail($detail_id);
 
@@ -106,7 +108,7 @@ class CheckoutController extends Controller
     }
 
     //
-    public function success(Request $request, $id)
+    public function success($id)
     {
         $transaction = Transaction::findOrFail($id);
         $transaction->transaction_status = 'PENDING';
