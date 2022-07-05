@@ -67,7 +67,9 @@
                                     <td>{{$item->transaction_status}}</td>
                                     <td>
                                         <a
-                                            href="{{route('transaction.show', $item->id)}}"
+                                            data-remote="{{route('transaction.show', $item->id)}}"
+                                            data-toggle = "modal"
+                                            data-target = "#myModal"
                                             class="btn btn-light"
                                         >
                                             <i class="fas fa-eye"></i>
@@ -111,3 +113,33 @@
 </div>
 
 @endsection
+@push('prepend-script')
+    <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" >
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" >Detail Transaksi</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <i class="fa fa-spinner fa-spin"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+@endpush
+@push('addon-script')
+<script>
+    jQuery(document).ready(function($){
+        $('#myModal').on('show.bs.modal', function(e){
+            var button = $(e.relatedTarget);
+            var modal = $(this);
+            modal.find('.modal-body').load(button.data("remote"));
+        });
+    });
+</script>
+    
+@endpush
