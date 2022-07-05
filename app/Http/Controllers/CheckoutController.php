@@ -86,9 +86,7 @@ class CheckoutController extends Controller
             'doe_passport' => 'required',
         ]);
 
-        $transactionDetails =
-
-            $data = $request->all();
+        $data = $request->all();
         $data['transactions_id'] = $id;
 
         TransactionDetail::create($data);
