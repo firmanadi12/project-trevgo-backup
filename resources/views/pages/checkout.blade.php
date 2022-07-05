@@ -111,7 +111,7 @@ Checkout
 
                 <label for="is_visa" class="sr-only">Visa</label>
                 <select name="is_visa" id="is_visa" class="custom-select mb-2 mr-sm-2" required>
-                  <option value="" selected>VISA</option>
+                  <option value="0" selected>VISA</option>
                   <option value="1">30 Days</option>
                   <option value="0">N/A</option>
                 </select>

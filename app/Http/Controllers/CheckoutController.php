@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\TourPackage;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
@@ -16,9 +17,9 @@ class CheckoutController extends Controller
     //  return to view with items 
     public function index(Request $request, $id)
     {
-        $item = Transaction::with(['details','tour_package','user'])->findOrFail($id);
+        $item = Transaction::with(['details', 'tour_package', 'user'])->findOrFail($id);
 
-        return view('pages.checkout',[
+        return view('pages.checkout', [
             'item' => $item
         ]);
     }
@@ -26,24 +27,29 @@ class CheckoutController extends Controller
     // 
     public function process(Request $request, $id)
     {
-        $tour_package = TourPackage::findOrFail($id);
+        $transaction = Transaction::where('users_id', Auth::user()->id)
+            ->where('tour_packages_id', $id)->first();
 
-        $transaction = Transaction::create([
-            'tour_packages_id' => $id,
-            'users_id' => Auth::user()->id,
-            'additional_visa' => 0,
-            'transaction_total' => $tour_package->price,
-            'transaction_status' => 'IN_CART'
-        ]);
 
-        TransactionDetail::create([
-            'transactions_id' => $transaction->id,
-            'username' => Auth::user()->username,
-            'nationality' => 'ID',
-            'is_visa' => false,
-            'doe_passport' => Carbon::now()->addYears(5)
-        ]);
+        if (!$transaction) {
+            $tour_package = TourPackage::findOrFail($id);
+            $transaction = Transaction::create([
+                'tour_packages_id' => $id,
+                'users_id' => Auth::user()->id,
+                'additional_visa' => 0,
+                'transaction_total' => $tour_package->price,
+                'transaction_status' => 'IN_CART'
+            ]);
 
+            TransactionDetail::create([
+                'transactions_id' => $transaction->id,
+                'username' => Auth::user()->username,
+                'nationality' => 'ID',
+                'is_visa' => false,
+                'doe_passport' => Carbon::now()->addYears(5)
+            ]);
+        }
+        // return "$transaction->id";
         return redirect()->route('checkout', $transaction->id);
     }
 
@@ -52,11 +58,10 @@ class CheckoutController extends Controller
     {
         $item = TransactionDetail::findorFail($detail_id);
 
-        $transaction = Transaction::with(['details','tour_package'])
+        $transaction = Transaction::with(['details', 'tour_package'])
             ->findOrFail($item->transactions_id);
 
-        if($item->is_visa)
-        {
+        if ($item->is_visa) {
             $transaction->transaction_total -= 190;
             $transaction->additional_visa -= 190;
         }
@@ -79,15 +84,16 @@ class CheckoutController extends Controller
             'doe_passport' => 'required',
         ]);
 
-        $data = $request->all();
+        $transactionDetails =
+
+            $data = $request->all();
         $data['transactions_id'] = $id;
 
         TransactionDetail::create($data);
 
         $transaction = Transaction::with(['tour_package'])->find($id);
 
-        if($request->is_visa)
-        {
+        if ($request->is_visa) {
             $transaction->transaction_total += 190;
             $transaction->additional_visa += 190;
         }
