@@ -32,7 +32,7 @@ class GalleryController extends Controller
     public function create()
     {
         $tour_packages = TourPackage::all();
-        return view('pages.admin.gallery.create',[
+        return view('pages.admin.gallery.create', [
             'tour_packages' => $tour_packages
         ]);
     }
@@ -47,7 +47,8 @@ class GalleryController extends Controller
     {
         $data = $request->all();
         $data['image'] = $request->file('image')->store(
-            'assets/gallery', 'public'
+            'assets/gallery',
+            'public'
         );
 
         Gallery::create($data);
@@ -72,18 +73,18 @@ class GalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+
     // Edit the gallery image
-     public function edit($id)
-    {   
+    public function edit($id)
+    {
         // to get the gallery image
         $item = Gallery::findOrFail($id);
 
         // to get the tour packages
         $tour_packages = TourPackage::all();
-        
+
         //to show the image in the edit form
-        return view('pages.admin.gallery.edit',[
+        return view('pages.admin.gallery.edit', [
             'item' => $item,
             'tour_packages' => $tour_packages
         ]);
@@ -97,12 +98,13 @@ class GalleryController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     // Update the gallery image
+    // Update the gallery image
     public function update(GalleryRequest $request, $id)
-    {   
+    {
         $data = $request->all();
         $data['image'] = $request->file('image')->store(
-            'assets/gallery', 'public'
+            'assets/gallery',
+            'public'
         );
 
         $item = Gallery::findOrFail($id);
@@ -118,7 +120,7 @@ class GalleryController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     //
+    //
     public function destroy($id)
     {
         $item = Gallery::findOrFail($id);
