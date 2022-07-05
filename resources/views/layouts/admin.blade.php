@@ -96,7 +96,9 @@
         </div><!-- /.modal-dialog -->
     </div>
     <!--script-->
+    @stack('prepend-script')
     @include('includes.admin.script')
+    @stack('addon-script')
     <!--/script-->
 </body>
 

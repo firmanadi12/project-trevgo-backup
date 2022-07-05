@@ -18,7 +18,7 @@
     <script src="{{asset('backend/assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js')}}"></script>
     <script src="{{asset('backend/dist/js/pages/dashboards/dashboard1.min.js')}}"></script>
 
-<script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+{{-- <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
 <script>
     CKEDITOR.replace( 'editor' );
-</script>
+</script> --}}
